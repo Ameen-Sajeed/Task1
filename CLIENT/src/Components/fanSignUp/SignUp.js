@@ -24,6 +24,7 @@ function FanSignUp() {
   const [justifyActive, setJustifyActive] = useState("tab1");
   const [errorMessage, setErrorMessage] = useState("");
 
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     SetFormValues({ ...formValues, [name]: value });
@@ -69,13 +70,13 @@ function FanSignUp() {
     }
   };
   const handleJustifyClick = (value) => {
+    SetFormValues(null)
     if (value === justifyActive) {
       return;
     }
 
     setJustifyActive(value);
   };
-
 
   const handleSubmitalent = (e) => {
     console.log("working ");
@@ -115,25 +116,23 @@ function FanSignUp() {
     }
   };
 
-
   return (
     <>
       <MDBContainer fluid>
         {/* <AiOutlineSearch/> */}
         <div className="box">
-            <div className="tes">
+          <div className="tes">
             <h6 className="p-2">Signup</h6>
             <h6 className="p-2">Login</h6>
-
-            </div>
+          </div>
           <h2 className="title">Fanconvo</h2>
           <h6 className="s-title ">
             A marketplace for conversations,mentorships, and performances.{" "}
           </h6>
           <div className="s-box">
             <h4 className="search p-2">Search New Talent</h4>
-        <FaSearch style={{color:"green"}} className="hy"/>
-            <input type="text" id="ip2"  />
+            <FaSearch style={{ color: "green" }} className="hy" />
+            <input type="text" id="ip2" />
           </div>
         </div>
 
@@ -192,31 +191,31 @@ function FanSignUp() {
                     <InputBox
                       title={"First Name."}
                       name="firstname"
-                      value={formValues.firstname}
+                      value={formValues?.firstname}
                       action={handleChange}
                     />
                     <InputBox
                       title={"Last Name"}
                       name="lastname"
-                      value={formValues.lastname}
+                      value={formValues?.lastname}
                       action={handleChange}
                     />
                     <InputBox
                       title={"Username"}
                       name="username"
-                      value={formValues.username}
+                      value={formValues?.username}
                       action={handleChange}
                     />
                     <InputBox
                       title={"Email"}
                       name="email"
-                      value={formValues.email}
+                      value={formValues?.email}
                       action={handleChange}
                     />
                     <InputBox
                       title={"Password"}
                       name="password"
-                      value={formValues.password}
+                      value={formValues?.password}
                       action={handleChange}
                     />
                   </>
@@ -226,31 +225,31 @@ function FanSignUp() {
                     <InputBox
                       title={"First Name."}
                       name="firstname"
-                      value={formValues.firstname}
+                      value={formValues?.firstname}
                       action={handleChange}
                     />
                     <InputBox
                       title={"Last Name"}
                       name="lastname"
-                      value={formValues.lastname}
+                      value={formValues?.lastname}
                       action={handleChange}
                     />
                     <InputBox
                       title={"Username"}
                       name="username"
-                      value={formValues.username}
+                      value={formValues?.username}
                       action={handleChange}
                     />
                     <InputBox
                       title={"Email"}
                       name="email"
-                      value={formValues.email}
+                      value={formValues?.email}
                       action={handleChange}
                     />
                     <InputBox
                       title={"Password"}
                       name="password"
-                      value={formValues.password}
+                      value={formValues?.password}
                       action={handleChange}
                     />
                   </>
@@ -263,18 +262,36 @@ function FanSignUp() {
                     <span className="terms">Terms & Conditions. </span>{" "}
                   </h6>
                 </div>
-                <MDBBtn
-                  rounded
-                  className="mx-2 px-5"
-                  color="success"
-                  size="lg"
-                  onClick={handleSubmitalent}
-                >
-                  Login
-                </MDBBtn>
+                {}
+
+                {justifyActive === "tab1" ? (
+                  <MDBBtn
+                    rounded
+                    className="mx-2 px-5"
+                    color="success"
+                    size="lg"
+                    onClick={handleSubmit}
+                  >
+                    Login
+                  </MDBBtn>
+                ) : (
+                  <MDBBtn
+                    rounded
+                    className="mx-2 px-5"
+                    color="success"
+                    size="lg"
+                    onClick={handleSubmitalent}
+                  >
+                    Login
+                  </MDBBtn>
+                )}
 
                 {errorMessage && (
-                  <div className="p-2 m-4" style={{backgroundColor:"red"}} role="alert">
+                  <div
+                    className="p-2 m-4"
+                    style={{ backgroundColor: "red" }}
+                    role="alert"
+                  >
                     {" "}
                     {errorMessage}
                   </div>
@@ -293,13 +310,12 @@ function FanSignUp() {
           </MDBCol>
         </MDBRow>
         <div className="des">
-        <h6>Terms of Use</h6>
-        <h6 className="des">© 2021 Foncovo</h6>
-        <h6>Contact Us </h6>
+          <h6>Terms of Use</h6>
+          <h6 className="des">© 2021 Foncovo</h6>
+          <h6>Contact Us </h6>
         </div>
-       
-        <h2 className="title2">Fanconvo</h2>
 
+        <h2 className="title2">Fanconvo</h2>
       </MDBContainer>
     </>
   );
